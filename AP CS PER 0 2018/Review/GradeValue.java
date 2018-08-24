@@ -12,7 +12,7 @@ public class GradeValue{
 		char value;
 		String grade;
 
-		System.out.print("Enter the card notation:");
+		System.out.print("Enter the Grade:");
 		userInput = input.next();
 		if(userInput.length() > 1) {
 			grade = userInput.substring(0, userInput.length() - 1);
@@ -60,7 +60,7 @@ public class GradeValue{
 		} else if (value == '+') {
 			gradeText += .3;
 		} else {
-			System.out.println("Error: Modifier invalid");
+			System.out.println("Error: Modifier invalid or does not exist");
 		}
 		
 		System.out.print("Numeric value: " + gradeText);
