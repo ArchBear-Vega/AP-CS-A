@@ -8,27 +8,30 @@ public class MrRobot extends UrRobot {
 
 	public MrRobot(int street, int avenue, Direction direction, int beepers) {
 		super(street, avenue, direction, beepers);
-		// TODO Auto-generated constructor stub
 	}
 
 	public MrRobot(int street, int avenue, Direction direction, int beepers, Color badgeColor) {
 		super(street, avenue, direction, beepers, badgeColor);
-		// TODO Auto-generated constructor stub
 	}
-	
-	
+
 	public void placeMove() {
 		putBeeper();
 		move();
-		
+
 	}
-	
+
 	public void sprint() {
 		move();
 		move();
 		move();
 	}
-	
+
+	public void sprint(int i) {
+		for (int count = 0; count < i; count++) {
+			move();
+		}
+	}
+
 	public void sprintDrop() {
 		move();
 		putBeeper();
@@ -37,7 +40,36 @@ public class MrRobot extends UrRobot {
 		move();
 		putBeeper();
 	}
-	
+
+	public void sprintDrop(int i, int s) {
+		for (int count = 0; count < i; count++) {
+			skipBlocks(s);
+			putBeeper();
+			move();
+
+		}
+	}
+
+	public void skipBlocks(int s) {
+		for (int count = 0; count < s; count++) {
+			move();
+		}
+	}
+
+	public void uTurn(boolean isLeft) {
+		if (isLeft) {
+			turnLeft();
+			move();
+			turnLeft();
+			move();
+		} else {
+			turnRight();
+			move();
+			turnRight();
+			move();
+		}
+	}
+
 	public void turnRight() {
 		turnLeft();
 		turnLeft();
@@ -50,12 +82,15 @@ public class MrRobot extends UrRobot {
 		putBeeper();
 		turnLeft();
 	}
-	
+
 	public void gardenHero() {
 		sprintDrop();
 		plantCorners();
 		sprintDrop();
 	}
-	
+
+	public void returnOrigin() {
+
+	}
 
 }
