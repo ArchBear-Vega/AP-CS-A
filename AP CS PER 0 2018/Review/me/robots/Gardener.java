@@ -31,10 +31,12 @@ public class Gardener implements Directions {
 		gardener.turnRight();
 		gardener.sprint();
 		gardener.turnLeft();
+		gardener.turnOff();
 		
 	}
 	static {
 		World.setDelay(15);
+		World.readWorld("Lab2.wld");
 		World.setVisible();
 		World.setBeeperColor(Color.green);
 	}
