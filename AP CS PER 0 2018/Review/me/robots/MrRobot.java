@@ -19,7 +19,7 @@ public class MrRobot extends Robot {
 		move();
 
 	}
-	
+
 	public void movePlace() {
 		move();
 		putBeeper();
@@ -42,7 +42,7 @@ public class MrRobot extends Robot {
 		movePlace();
 		movePlace();
 	}
-	
+
 	public void dropSprint() {
 		placeMove();
 		placeMove();
@@ -55,6 +55,7 @@ public class MrRobot extends Robot {
 			placeMove();
 		}
 	}
+
 	public void dropSprint(int i, int s) {
 		for (int count = 0; count < i; count++) {
 			skipBlocks(s);
@@ -105,61 +106,61 @@ public class MrRobot extends Robot {
 	public void returnOrigin() {
 
 	}
-	
+
 	public void faceNorth() {
-		if(!facingNorth()) {
+		if (!facingNorth()) {
 			turnLeft();
 		}
-		if(!facingNorth()) {
+		if (!facingNorth()) {
 			turnLeft();
 		}
-		if(!facingNorth()) {
+		if (!facingNorth()) {
 			turnLeft();
 		}
 	}
-	
+
 	public void faceSouth() {
-		if(!facingSouth()) {
+		if (!facingSouth()) {
 			turnLeft();
 		}
-		if(!facingSouth()) {
+		if (!facingSouth()) {
 			turnLeft();
 		}
-		if(!facingSouth()) {
+		if (!facingSouth()) {
 			turnLeft();
 		}
 	}
-	
+
 	public void faceEast() {
-		if(!facingEast()) {
+		if (!facingEast()) {
 			turnLeft();
 		}
-		if(!facingEast()) {
+		if (!facingEast()) {
 			turnLeft();
 		}
-		if(!facingEast()) {
+		if (!facingEast()) {
 			turnLeft();
 		}
 	}
-	
+
 	public void faceWest() {
-		if(!facingWest()) {
+		if (!facingWest()) {
 			turnLeft();
 		}
-		if(!facingWest()) {
+		if (!facingWest()) {
 			turnLeft();
 		}
-		if(!facingWest()) {
+		if (!facingWest()) {
 			turnLeft();
 		}
 	}
-	
+
 	public boolean southIsBlocked() {
-		if(facingSouth() && !frontIsClear()) {
+		if (facingSouth() && !frontIsClear()) {
 			return true;
 		} else {
 			return false;
 		}
 	}
-	
+
 }
