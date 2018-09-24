@@ -1,17 +1,16 @@
 package me.robots;
 
-import java.util.Scanner;
 import kareltherobot.Directions;
-import kareltherobot.UrRobot;
 import kareltherobot.World;
 
 public class RobotPractice implements Directions{
 	public static void main(String[]args) {
-		boolean doEnd = false;
 		MrRobot karel = new MrRobot(2, 7, West, 0);
 
 		karel.move();
 		karel.turnOff();
+		
+		
 		
 	}
 	

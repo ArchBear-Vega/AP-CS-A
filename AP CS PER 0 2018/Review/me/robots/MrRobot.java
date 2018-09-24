@@ -2,9 +2,9 @@ package me.robots;
 
 import java.awt.Color;
 
-import kareltherobot.UrRobot;
+import kareltherobot.Robot;
 
-public class MrRobot extends UrRobot {
+public class MrRobot extends Robot {
 
 	public MrRobot(int street, int avenue, Direction direction, int beepers) {
 		super(street, avenue, direction, beepers);
@@ -18,6 +18,11 @@ public class MrRobot extends UrRobot {
 		putBeeper();
 		move();
 
+	}
+	
+	public void movePlace() {
+		move();
+		putBeeper();
 	}
 
 	public void sprint() {
@@ -33,19 +38,27 @@ public class MrRobot extends UrRobot {
 	}
 
 	public void sprintDrop() {
-		move();
-		putBeeper();
-		move();
-		putBeeper();
-		move();
-		putBeeper();
+		movePlace();
+		movePlace();
+		movePlace();
+	}
+	
+	public void dropSprint() {
+		placeMove();
+		placeMove();
+		placeMove();
 	}
 
 	public void sprintDrop(int i, int s) {
 		for (int count = 0; count < i; count++) {
 			skipBlocks(s);
-			putBeeper();
-			move();
+			placeMove();
+		}
+	}
+	public void dropSprint(int i, int s) {
+		for (int count = 0; count < i; count++) {
+			skipBlocks(s);
+			movePlace();
 
 		}
 	}
@@ -92,5 +105,61 @@ public class MrRobot extends UrRobot {
 	public void returnOrigin() {
 
 	}
-
+	
+	public void faceNorth() {
+		if(!facingNorth()) {
+			turnLeft();
+		}
+		if(!facingNorth()) {
+			turnLeft();
+		}
+		if(!facingNorth()) {
+			turnLeft();
+		}
+	}
+	
+	public void faceSouth() {
+		if(!facingSouth()) {
+			turnLeft();
+		}
+		if(!facingSouth()) {
+			turnLeft();
+		}
+		if(!facingSouth()) {
+			turnLeft();
+		}
+	}
+	
+	public void faceEast() {
+		if(!facingEast()) {
+			turnLeft();
+		}
+		if(!facingEast()) {
+			turnLeft();
+		}
+		if(!facingEast()) {
+			turnLeft();
+		}
+	}
+	
+	public void faceWest() {
+		if(!facingWest()) {
+			turnLeft();
+		}
+		if(!facingWest()) {
+			turnLeft();
+		}
+		if(!facingWest()) {
+			turnLeft();
+		}
+	}
+	
+	public boolean southIsBlocked() {
+		if(facingSouth() && !frontIsClear()) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
 }
