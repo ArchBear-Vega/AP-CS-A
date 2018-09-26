@@ -89,6 +89,11 @@ public class MrRobot extends Robot {
 		turnLeft();
 		turnLeft();
 	}
+	
+	public void turnAround() {
+		turnLeft();
+		turnLeft();
+	}
 
 	public void plantCorners() {
 		turnLeft();

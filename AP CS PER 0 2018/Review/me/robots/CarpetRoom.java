@@ -26,8 +26,8 @@ public class CarpetRoom implements Directions {
 
 	static {
 		World.reset();
-		World.readWorld("Lab04");
-		World.setDelay(3);
+		World.readWorld("Lab4.wld");
+		World.setDelay(10);
 		World.setVisible();
 	}
 }
