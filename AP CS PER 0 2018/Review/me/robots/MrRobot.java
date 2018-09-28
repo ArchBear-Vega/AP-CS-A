@@ -5,7 +5,7 @@ import java.awt.Color;
 import kareltherobot.Robot;
 
 public class MrRobot extends Robot {
-
+	public static final String DIRECTORY = "\\\\\\\\busd.local\\\\instruction\\\\Student-Home-Directories\\\\19vtovmasian\\\\git\\\\AP-CS-A\\\\AP CS PER 0 2018\\\\Review\\\\worlds\\\\";
 	public MrRobot(int street, int avenue, Direction direction, int beepers) {
 		super(street, avenue, direction, beepers);
 	}
@@ -167,5 +167,11 @@ public class MrRobot extends Robot {
 			return false;
 		}
 	}
+	
+	public String getDirectory() {
+		return DIRECTORY;
+	}
+	
+	
 
 }
