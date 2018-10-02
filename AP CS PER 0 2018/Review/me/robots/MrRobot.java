@@ -161,14 +161,10 @@ public class MrRobot extends Robot {
 	}
 
 	public boolean southIsBlocked() {
-		if (facingSouth() && !frontIsClear()) {
-			return true;
-		} else {
-			return false;
-		}
+		return (facingSouth() && !frontIsClear());
 	}
 	
-	public String getDirectory() {
+	public static String getDirectory() {
 		return DIRECTORY;
 	}
 	

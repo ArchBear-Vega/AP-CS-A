@@ -57,7 +57,8 @@ public class ReviewRobot extends Robot
    public void harvestAllToWall()
    {
       while(frontIsClear()){
-         move();
+         harvest();
+    	 move();
          harvest();
       }
    }
