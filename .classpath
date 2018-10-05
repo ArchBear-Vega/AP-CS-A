@@ -2,6 +2,5 @@
 <classpath>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="src" path="AP CS PER 0 2018/Review"/>
-	<classpathentry kind="lib" path="//busd.local/instruction/Student-Home-Directories/19vtovmasian/git/AP-CS-A/AP CS PER 0 2018/Review/me/robots/KarelJRobot.jar"/>
 	<classpathentry kind="output" path="AP CS PER 0 2018/Review"/>
 </classpath>
