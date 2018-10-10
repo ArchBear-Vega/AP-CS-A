@@ -10,13 +10,15 @@ public class Employee1 {
 		worker1.setlName("Montana");
 		worker1.setSalary(100000);
 		
-		worker1.raiseSalary(15);
-		
+		worker1.raiseSalary(10);
+
 		System.out.println(worker1.getSalary());
 		
-		double bonus = worker1.getBonus(20);
+		double bonus = worker1.getBonus(25);
 		
-		System.out.print(bonus);
+		System.out.println(bonus);
+		
+		worker1.print();
 	}
 
 }

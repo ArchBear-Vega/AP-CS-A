@@ -7,14 +7,14 @@ public class Employee {
 	private String lName;
 
 	public Employee() {
-		
+
 		this.setSalary(0);
 		this.setfName("");
 		this.setlName("");
 	}
 
 	public Employee(double salary, String fName, String lName) {
-		
+
 		this.setSalary(salary);
 		this.setfName(fName);
 		this.setlName(lName);
@@ -29,7 +29,10 @@ public class Employee {
 	}
 
 	public void raiseSalary(double percent) {
-		salary *= 1 + percent / 100;
+		
+		
+		
+		salary = salary * percent / 100  + salary;
 	}
 
 	public double getBonus(double percent) {
@@ -51,5 +54,16 @@ public class Employee {
 
 	public void setlName(String lName) {
 		this.lName = lName;
+	}
+
+	public void print() {
+		System.out.print(fName + " " + lName + ";" + salary);
+	}
+	
+	@Override
+	public String toString() {
+		
+		return (fName + "   " + lName + " ; " + salary);
+		
 	}
 }
