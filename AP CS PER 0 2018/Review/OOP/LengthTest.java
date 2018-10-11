@@ -10,7 +10,7 @@ public class LengthTest {
 		Scanner in = new Scanner(System.in);
 
 		System.out.println("There are:");
-		System.out.println(l.toString());
+		System.out.println(l);
 
 		System.out.print("How many inches? ");
 		int inches = in.nextInt();
@@ -18,7 +18,7 @@ public class LengthTest {
 		l.addInches(inches);
 
 		System.out.println(inches + "in =");
-		System.out.println(l.toString());
+		System.out.println(l);
 
 		System.out.print("How many yards? ");
 

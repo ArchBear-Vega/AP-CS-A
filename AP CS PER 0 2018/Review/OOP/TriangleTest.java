@@ -17,7 +17,7 @@ public class TriangleTest {
 		tri1.multiply(2);
 		
 		tri2.multiply(.5);
-		
+		// It's time to multiply because I need too practice typing practice becauseI am an oaf and sometimes I cannot
 		System.out.println(tri1.getPerimeter() + ";" + tri2.getPerimeter());
 	}
 }
