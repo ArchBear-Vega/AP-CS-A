@@ -12,30 +12,29 @@ public class Length {
 	}
 
 	public Length(int yards, int feet, int inches) {
-		this.setYards(Math.abs(yards));
-		this.setFeet(Math.abs(feet));
-		this.setInches(Math.abs(inches));
-	}
-
-	public void addInches(int inches) {
-		this.inches += inches;
+		this.setYards(yards);
+		this.setFeet(feet);
+		this.setInches(inches);
 		simplify();
 	}
 
-	public Length simplify() {
-		while (inches >= 12 || feet >= 3) {
+	public void addInches(int inches) {
+		this.inches += Math.abs(inches);
+		simplify();
+	}
+
+	private void simplify() {
+		if (inches >= 12 || feet >= 3) {
 			this.feet += this.inches / 12;
 			this.inches %= 12;
 			this.yards += this.feet / 3;
 			this.feet %= 3;
 		}
-		return new Length(this.yards, this.feet, this.inches);
 	}
 
 	public void printLength() {
 		System.out.print(toString());
 	}
-	
 
 	public String toString() {
 		return "\t" + yards + "yds" + "\n\t" + feet + "ft" + "\n\t" + inches + "in\n";
@@ -46,7 +45,7 @@ public class Length {
 	}
 
 	public void setYards(int yards) {
-		this.yards = yards;
+		this.yards = Math.abs(yards);
 	}
 
 	public int getFeet() {
@@ -54,7 +53,7 @@ public class Length {
 	}
 
 	public void setFeet(int feet) {
-		this.feet = feet;
+		this.feet = Math.abs(feet);
 	}
 
 	public int getInches() {
@@ -62,6 +61,6 @@ public class Length {
 	}
 
 	public void setInches(int inches) {
-		this.inches = inches;
+		this.inches = Math.abs(inches);
 	}
 }
