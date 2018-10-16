@@ -6,18 +6,14 @@ public class TriangleTest {
 		
 		Triangle tri1 = new Triangle();
 		
-		Triangle tri2 = new Triangle(6, 4, 4);
+		Triangle tri2 = new Triangle();
 		
 		System.out.println(tri1 + ";" + tri2);
 		
 		System.out.println(tri1.classify() + ";" + tri2.classify());
 		
 		System.out.println(tri1.getPerimeter() + ";" + tri2.getPerimeter());
-		
-		tri1.multiply(2);
-		
-		tri2.multiply(.5);
-		// It's time to multiply because I need too practice typing practice becauseI am an oaf and sometimes I cannot
-		System.out.println(tri1.getPerimeter() + ";" + tri2.getPerimeter());
+
+		System.out.println(tri1.equals(tri2));
 	}
 }
