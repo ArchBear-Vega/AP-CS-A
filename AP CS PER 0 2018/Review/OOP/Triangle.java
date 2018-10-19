@@ -32,22 +32,21 @@ public class Triangle {
 
 		return sideA + sideB + sideC;
 	}
-	
+
 	public String toString() {
 		
 		return sideA + "," + sideB + "," + sideC;
 	}
-	
+
 	@Override
 	public boolean equals(Object anObject) {
 		Triangle i = (Triangle) anObject;
-		
-		
+
 		return (i.sideA == this.sideA && i.sideB == sideB && i.sideC == sideC);
-		
+
 	}
-	
-	
+
+
 	public String classify() {
 		if(sideA == sideB || sideB == sideC) {
 			if(sideA == sideC) {
