@@ -27,11 +27,11 @@ public class FractionTest {
 
 		Fraction fraction3 = fraction1.add(fraction2);
 		System.out.println(fraction1 + " + " + fraction2 + " = " + fraction3);
-		Fraction fraction4;
-		//System.out.println(fraction1 + " * " + fraction2 + " = " + fraction4); 
-		Fraction fraction5;
-		//System.out.println(fraction1 + " - " + fraction2 + " = " + fraction5); 
-		Fraction fraction6;
-		//System.out.println(fraction1 + " / " + fraction2 + " = " + fraction6);
+		Fraction fraction4 = fraction1.multiply(fraction2);
+		System.out.println(fraction1 + " * " + fraction2 + " = " + fraction4); 
+		Fraction fraction5 = fraction1.subtract(fraction2);
+		System.out.println(fraction1 + " - " + fraction2 + " = " + fraction5); 
+		Fraction fraction6 = fraction1.divide(fraction2);
+		System.out.println(fraction1 + " / " + fraction2 + " = " + fraction6);
 	}
 }
