@@ -6,22 +6,22 @@ public class Fraction {
 	private boolean negative;
 
 	public Fraction() {
-		
+		numerator = 1;
+		denominator = 1;
+		negative = false;
 	}
 	
 	public Fraction(int numerator, int denominator) {
 		
-		
-		
-		this(Math.abs(numerator), Math.abs(denominator), (numerator < 0 && denominator < 0) || (numerator > 0 && denominator > 0) ? false : true);
-		
+		this(numerator, denominator, false);
+		fixSign();
 	}
 	
 	private Fraction(int numerator, int denominator, boolean negative) {
-
+		
+		this.negative = negative;
 		this.numerator = numerator;
 		this.denominator = denominator;
-		this.negative = negative;
 		reduce();
 		
 	}
@@ -39,7 +39,11 @@ public class Fraction {
 	}
 
 	public String toString() {
-		return isNegative() ? "-" + numerator + "/" + denominator : "" + numerator + "/" + denominator;
+		if(denominator == 0) {
+			return "undefined";
+		} else {
+			return isNegative() ? "-" + numerator + "/" + denominator : "" + numerator + "/" + denominator;
+		}
 	}
 
 	public Fraction add(Fraction fr2) {
@@ -57,8 +61,7 @@ public class Fraction {
 			newDen = denominator;
 		}
 		
-		System.out.println(tempNum1 + "TEST NUM");
-		System.out.println(tempNum2 + "TEST NUM");
+		
 		// SAME SIDES ADD AND KEEP, DIFFERENT SIGNS SUBTRACT, KEEP THE SIGN OF THE GREATER NUMBER THEN YOU'LL BE EXACT!
 		if(isNegative() && fr2.isNegative()) {
 			
@@ -81,18 +84,26 @@ public class Fraction {
 	}
 	
 	private void reduce() {
-		if(getNumerator() == getDenominator()) {
+		if(denominator == 0) {
+			numerator = 1;
+			denominator = 0;
+		} else if((getNumerator() == getDenominator())) {
 			numerator = 1;
 			denominator = 1;
 		} else {
-			int gcm = getGCM (numerator, denominator);
+			int gcm = getGCM(numerator, denominator);
 			numerator /= gcm;
 			denominator /= gcm;
-			System.out.println(gcm);
 			
 		}
 	}
 	
+	
+	private void fixSign() {
+		negative = (numerator <= 0 && denominator <= 0) || (numerator >= 0 && denominator >= 0) ? false : true;
+		numerator = Math.abs(numerator); 
+		denominator = Math.abs(denominator);
+	}
 
 	private int getGCM(int a, int b) {
 		return b == 0 ? a : getGCM(b, a % b);
