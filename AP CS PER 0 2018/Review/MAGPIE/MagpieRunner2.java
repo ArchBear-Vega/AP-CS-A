@@ -23,7 +23,11 @@ public class MagpieRunner2 {
 		while (!statement.equalsIgnoreCase("Bye")) {
 			System.out.println(maggie.getResponse(statement));
 			statement = in.nextLine();
+			
 		}
+		System.out.print("Fare thee well!");
+		
+		in.close();
 	}
 
 }

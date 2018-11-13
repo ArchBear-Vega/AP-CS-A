@@ -2,7 +2,7 @@ package MAGPIE;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.InputStream;
+import java.util.Random;
 import java.util.Scanner;
 
 /**
@@ -23,7 +23,7 @@ public class Magpie2 {
 	 * @return a greeting
 	 */
 	public String getGreeting() {
-		return "Hello, let's talk.";
+		return "Good morrow, permit me to enagageth thee in clever discourse.";
 	}
 
 	/**
@@ -32,7 +32,7 @@ public class Magpie2 {
 	 * @param statement
 	 *            the user statement
 	 * @return a response based on the rules given
-	 * @throws FileNotFoundException 
+	 * @throws FileNotFoundException
 	 */
 	public String getResponse(String statement) {
 		String response = "";
@@ -40,75 +40,89 @@ public class Magpie2 {
 		// Look for a two word (you <something> me) pattern
 		int youPsn = findKeyword(statement, "you", 0);
 		int iPsn = findKeyword(statement, "I", 0);
-
+		
 		if (statement.length() == 0) {
-			response = "Say something, I'm giving up on you.";
-		} else if (findKeyword(statement, "no") >= 0) {
-			response = "Why so negative?";
+			response = "Is th're a bird at mine own window? Speak again, let thy beauty and thy voice penetrate the morning and the Heavens!";
+		} else if (findKeyword(statement, "no") >= 0 || findKeyword(statement, "nein") >= 0 || findKeyword(statement, "niet") >= 0 || findKeyword(statement, "non") >= 0 ) {
+			response = "Why arth thou so negatively inclined?";
 		} else if (findKeyword(statement, "mother") >= 0 || findKeyword(statement, "father") >= 0 || findKeyword(statement, "sister") >= 0 || findKeyword(statement, "brother") >= 0) {
-			response = "Tell me more about your family.";
-		} else
-			try {
-				if (hasName(statement)) {
-					String name = getName(statement);
-					
-					response = name + "is the best person in the world!";
-				}
-
-				// Responses which require transformations
-				else if (youPsn >= 0 && findKeyword(statement, "me", youPsn) >= 0) {
-					response = transformYouMeStatement(statement);
-				} else if (iPsn >= 0 && findKeyword(statement, "you", iPsn) >= 0) {
-					response = transformIYouStatement(statement);
-				} else if (findKeyword(statement, "I want to", 0) >= 0) {
-					response = transformIWantToStatement(statement);
-				} else if (findKeyword(statement, "I want", 0) >= 0) {
-					response = transformIWantStatement(statement);
-				} else {
-					response = getRandomResponse();
-				}
-				return response;
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+			response = "Let us engage in more discourse regarding thy kin!";
+		} else if (hasName(statement)) {
+			String name = getName(statement);
+			Random random = new Random();
+			int abc = random.nextInt(100);
+			if(abc > 50) {
+				response = name + " is an most wondrous p'rson.";
+			} else if (abc < 50) {
+				response = name + " is an horrendous p'rson.";
+			} else {
+				response = name + " hates you, you are not good for anything, bye.";
 			}
+		} else if (findKeyword(statement, "hello") >= 0 || findKeyword(statement, "good evening") >= 0 || findKeyword(statement, "good day") >= 0 || findKeyword(statement, "good afternoon") >= 0){
+			response = "Hello! The most glorious of days we're having is it not?";
+		} else if (findKeyword(statement, "don't" ) >= 0 || findKeyword(statement, "do not") >= 0 || findKeyword(statement, "dont") >= 0) {
+			response = "Wherefore not?";
+		} else if (findKeyword(statement, "pineapple") >= 0 && findKeyword(statement, "pizza") >= 0) {
+			response = "HEATHEN, FAIR THEE BACK TO THE DEPTHS OF THE INFERNO FROM WHENCE YOU CAME, THOU HAS'T MIXED FOODS WHICH SHOULD NOT BE MIXED";
+		}
+
+		// Responses which require transformations
+		 else if (youPsn >= 0 && findKeyword(statement, "me", youPsn) >= 0) {
+			 response = transformYouMeStatement(statement);
+		 } else if (iPsn >= 0 && findKeyword(statement, "you", iPsn) >= 0) {
+			 response = transformIYouStatement(statement);
+		 }
+		else if (findKeyword(statement, "I want to", 0) >= 0) {
+			response = transformIWantToStatement(statement);
+		} else if (findKeyword(statement, "I want", 0) >= 0) {
+			response = transformIWantStatement(statement);
+		} else {
+			response = getRandomResponse();
+		}
 		return response;
+
 	}
-	
-	
+
+	@SuppressWarnings("resource")
 	private String getName(String statement) {
-		File names = new File("\\\\busd.local\\instruction\\Student-Home-Directories\\19vtovmasian\\git\\AP-CS-A\\AP CS PER 0 2018\\Review\\MAGPIE\\Names");
-		Scanner input;
+		File names = new File(
+				"\\\\busd.local\\instruction\\Student-Home-Directories\\19vtovmasian\\git\\AP-CS-A\\AP CS PER 0 2018\\Review\\MAGPIE\\Names");
+
 		try {
-			input = new Scanner(names);
-			String name = input.nextLine();
+			Scanner input = new Scanner(names);
 			while (input.hasNextLine()) {
-			    if(statement.contains(name)) {
-			    	return "name";
-			    }
+				String name = input.nextLine();
+				if (statement.contains(name)) {
+					return name;
+				}
 			}
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		 
-		return null;
+
+		return "Noone";
 	}
 
-	private boolean hasName(String statement) throws Exception {
-		File names = new File("\\\\busd.local\\instruction\\Student-Home-Directories\\19vtovmasian\\git\\AP-CS-A\\AP CS PER 0 2018\\Review\\MAGPIE\\Names");
-		Scanner input = new Scanner(names);
-		
-		String name = input.nextLine();
-		while (input.hasNextLine()) {
-		    if(statement.contains(name)) {
-		    	return true;
-		    }
-		} 
-		
-		
-		return true;
+	@SuppressWarnings("resource")
+	private boolean hasName(String statement) {
+		File names = new File(
+				"\\\\busd.local\\instruction\\Student-Home-Directories\\19vtovmasian\\git\\AP-CS-A\\AP CS PER 0 2018\\Review\\MAGPIE\\Names");
+		Scanner input;
+		try {
+			input = new Scanner(names);
+			while (input.hasNextLine()) {
+				String name = input.nextLine();
+				if (statement.contains(name)) {
+					return true;
+				}
+			}
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return false;
 	}
 
 	/**
@@ -121,7 +135,7 @@ public class Magpie2 {
 	 */
 	private String transformIWantToStatement(String statement) {
 		// Remove the final period, if there is one
-		statement = statement.trim();
+		statement = statement.toLowerCase().trim();
 		String lastChar = statement.substring(statement.length() - 1);
 		if (lastChar.equals(".") || lastChar.equals("!")) {
 			statement = statement.substring(0, statement.length() - 1);
@@ -148,7 +162,7 @@ public class Magpie2 {
 		}
 		int psn = findKeyword(statement, "I want", 0);
 		String restOfStatement = statement.substring(psn + 6).trim();
-		return "Would you really be happy if you had " + restOfStatement + "?";
+		return "Would'st thou be so content if you were to have " + restOfStatement + "?";
 	}
 
 	/**
@@ -171,7 +185,7 @@ public class Magpie2 {
 		int psnOfMe = findKeyword(statement, "me", psnOfYou + 3);
 
 		String restOfStatement = statement.substring(psnOfYou + 3, psnOfMe).trim();
-		return "What makes you think that I " + restOfStatement + " you?";
+		return "What compells thee think that I " + restOfStatement + " you?";
 	}
 
 	/**
@@ -194,7 +208,7 @@ public class Magpie2 {
 		int psnOfYou = findKeyword(statement, "you", psnOfI + 1);
 
 		String restOfStatement = statement.substring(psnOfI + 1, psnOfYou).trim();
-		return "Why do you " + restOfStatement + " me?";
+		return "For what do you " + restOfStatement + " me?";
 	}
 
 	/**
@@ -270,13 +284,13 @@ public class Magpie2 {
 		String response = "";
 
 		if (whichResponse == 0) {
-			response = "Interesting, tell me more.";
+			response = "What marvelous discourse, tell me more.";
 		} else if (whichResponse == 1) {
 			response = "Hmmm.";
 		} else if (whichResponse == 2) {
-			response = "Do you really think so?";
+			response = "Dost thou really thinketh so?";
 		} else if (whichResponse == 3) {
-			response = "You don't say.";
+			response = "You say not.";
 		}
 
 		return response;
