@@ -1,52 +1,90 @@
 package ARRAYS;
 
-import java.util.Scanner;
-
 public class RectangleArray {
-	
+
 	private Rectangle[] list;
-	
+
 	public RectangleArray() {
 		list = new Rectangle[20];
 	}
-	
-	public void fillArray(Rectangle rectangle) {
-		Scanner input = new Scanner(System.in);
-		for(int i = 0; i < 20; i++) {
-			
-			list[i-1] = rectangle;
+
+	public void fillArray(int length, int width) {
+
+		for (int i = 0; i < 20; i++) {
+
+			list[i] = new Rectangle(getRLength(length), getRWidth(width));
 		}
-		
-		input.close();
+
 	}
-	
+
+	private int getRWidth(int width) {
+
+		return (int) (Math.random() * (width + 1));
+	}
+
+	private int getRLength(int length) {
+		return (int) (Math.random() * (length + 1));
+	}
+
 	public void print() {
-		for(int i = 0; i < list.length; i++) {
-			System.out.print(list[i]);
+		for (Rectangle r : list) {
+			System.out.println(r);
 		}
 	}
-	
+
 	public int search(Rectangle item) {
-		for(Rectangle rec : list) {
-			if(rec.equals(item)) {
-				
+		int i = 0;
+		for (Rectangle rec : list) {
+			if (rec.equals(item)) {
+				return i;
+			}
+			i++;
+		}
+		return -1;
+	}
+
+	public Rectangle largestArea() {
+		Rectangle r;
+		r = new Rectangle(0, 0);
+		for (Rectangle i : list) {
+			if (r.findArea() < i.findArea()) {
+				r = i;
 			}
 		}
+		return r;
+
 	}
-	
-	public double largestArea() {
-		
+
+	public Rectangle smallestArea() {
+		Rectangle r;
+		r = list[0];
+		for (Rectangle i : list) {
+			if (r.findArea() > i.findArea()) {
+				r = i;
+			}
+		}
+		return r;
 	}
-	
-	public double smallestArea() {
-		
+
+	public Rectangle largestPerimeter() {
+		Rectangle r;
+		r = new Rectangle(0, 0);
+		for (Rectangle i : list) {
+			if (r.findPerimeter() < i.findPerimeter()) {
+				r = i;
+			}
+		}
+		return r;
 	}
-	
-	public double largestPerimeter() {
-		
-	}
-	
-	public double smallestPerimeter() {
-		
+
+	public Rectangle smallestPerimeter() {
+		Rectangle r;
+		r = list[0];
+		for (Rectangle i : list) {
+			if (r.findPerimeter() > i.findPerimeter()) {
+				r = i;
+			}
+		}
+		return r;
 	}
 }

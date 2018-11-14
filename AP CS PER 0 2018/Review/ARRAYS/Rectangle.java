@@ -10,8 +10,16 @@ public class Rectangle {
 	}
 	
 	public Rectangle(int length, int width) {
-		this.length = length;
-		this.width = width;
+		this.length = Math.abs(length);
+		this.width = Math.abs(width);
+	}
+	
+	public double getLength() {
+		return length;
+	}
+	
+	public double getWidth() {
+		return width;
 	}
 	
 	public double findArea() {
@@ -21,8 +29,13 @@ public class Rectangle {
 	public double findPerimeter() {
 		return 2*length + 2*width;
 	}
+	
+	public boolean equals(Rectangle rec) {
+		return findArea() == rec.findArea() && findPerimeter() == rec.findPerimeter();
+	}
+	
 	@Override
 	public String toString() {
-		return length + " cm x " + width + " cm";
+		return length + " by " + width ;
 	}
 }
