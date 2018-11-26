@@ -31,7 +31,7 @@ public class Rectangle {
 	}
 	
 	public boolean equals(Rectangle rec) {
-		return findArea() == rec.findArea() && findPerimeter() == rec.findPerimeter();
+		return this.getLength() == rec.getLength() && this.getWidth() == rec.getWidth();
 	}
 	
 	@Override

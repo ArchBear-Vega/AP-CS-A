@@ -19,11 +19,11 @@ public class RectangleArray {
 
 	private int getRWidth(int width) {
 
-		return (int) (Math.random() * (width + 1));
+		return (int) (Math.random() * (width) + 1);
 	}
 
 	private int getRLength(int length) {
-		return (int) (Math.random() * (length + 1));
+		return (int) (Math.random() * (length) + 1);
 	}
 
 	public void print() {
