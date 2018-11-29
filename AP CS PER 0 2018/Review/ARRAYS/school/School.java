@@ -10,7 +10,7 @@ public class School {
 	public String findStudent(String teacherID, int stuID) {
 		
 		for(Classroom c : rooms) {
-			if(c.getTeacher() == teacherID) {
+			if(c.getTeacher().equals(teacherID)) {
 				return c.lookUpStudent(stuID);
 			}
 		}

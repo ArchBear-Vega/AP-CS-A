@@ -52,4 +52,35 @@ public class SearchArray {
 		return i == myLength ? -1 : i;
 		
 	}
+	
+	public void selectionSort() {
+		int inner = 0;
+		int outer = 0;
+		int index = 0;
+		for(outer = 0; outer < myNumList.length; outer++) {
+			index = outer;
+			for(inner = outer + 1; inner < myNumList.length; inner++) {
+				if(myNumList[inner] < myNumList[index]) {
+					index = inner;
+				}
+			}
+			swap(index, outer);
+		}
+	}
+	
+	private void swap(int a, int b) {
+		int temp;
+		temp = myNumList[a];
+		myNumList[a] = myNumList[b];
+		myNumList[b] = temp;
+	}
+	
+	public void binarySearch() {
+		for() {
+			
+			while() {
+				
+			}
+		}
+	}
 }
