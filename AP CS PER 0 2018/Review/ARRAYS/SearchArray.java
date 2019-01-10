@@ -86,22 +86,16 @@ public class SearchArray {
 
 		while (low <= high) {
 			int m = (low + high) / 2;
-
-			// Check if x is present at mid
-			if (myNumList[m] == x)
+		
+			if (myNumList[m] == x) {
 				return m;
-
-			// If x greater, ignore left half
-			if (myNumList[m] < x)
+			} else if (myNumList[m] < x) {
 				low = m + 1;
-
-			// If x is smaller, ignore right half
-			else
+			} else {
 				high = m - 1;
+			}
 		}
 
-		// if we reach here, then element was
-		// not present
 		return -1;
 
 	}
@@ -127,7 +121,7 @@ public class SearchArray {
 				int i = myNumList.length - 1;
 				boolean found = false;
 				int replaced = 0;
-				while (i > index + 1) {
+				while (i > index) {
 					if (myNumList[i] != 0 && myNumList[i] < num && !found) {
 						index = i + 1;
 						i = myNumList.length - 1;
@@ -141,11 +135,12 @@ public class SearchArray {
 				myNumList[index] = num;
 				myNumList[index + 1] = replaced;
 			} else {
-				int replaced = myNumList[0];
-				for(int i = myNumList.length-1; i > 0; i--) {
-					myNumList[i] = myNumList[i--];
+				int replaced = 0;
+				for (int i = myNumList.length - 1; i > 0; i--) {
+					myNumList[i] = myNumList[i - 1];
 				}
-				
+				myNumList[0] = replaced;
+
 			}
 		} else {
 			System.out.println("Cannot be inserted!");
