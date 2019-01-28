@@ -1,4 +1,4 @@
-package ARRAYS;
+package ARRAYS.knight;
 
 public class Move {
 	private int x;
@@ -24,5 +24,4 @@ public class Move {
 	public void setY(int y) {
 		this.y = y;
 	}
-	
 }
