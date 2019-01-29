@@ -5,8 +5,8 @@ public class Move {
 	private int y;
 	
 	public Move(int x, int y) {
-		this.setX(x);
-		this.setY(y);
+		this.x = x;
+		this.y = y;
 	}
 
 	public int getX() {
@@ -23,5 +23,9 @@ public class Move {
 
 	public void setY(int y) {
 		this.y = y;
+	}
+	
+	public String toString() {
+		return x + " " + y;
 	}
 }

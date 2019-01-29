@@ -4,7 +4,7 @@ public class Knight {
 	private int x;
 	private int y;
 
-	private Move[] moves = { new Move(-2, 1), new Move(-2, -1), new Move(2, -1), new Move(2, 1), new Move(-1, 2),
+	private final Move[] moves = { new Move(-2, 1), new Move(-2, -1), new Move(2, -1), new Move(2, 1), new Move(-1, 2),
 			new Move(-1, -2), new Move(1, 2), new Move(1, -2) };
 	private int[][] board;
 
@@ -36,9 +36,12 @@ public class Knight {
 
 	public Move[] getMoves() {
 		Move[] m = new Move[getNumberOfMoves()];
-		for (int i = 0; i < m.length; i++) {
+		int index2 = 0;
+		for (int i = 0; i < moves.length; i++) {
 			if (onBoard(moves[i].getX() + getX(), moves[i].getY() + getY())) {
-				m[i] = moves[i];
+				m[index2] = moves[i];
+				index2++;
+				
 			}
 		}
 		return m;
@@ -87,7 +90,7 @@ public class Knight {
 	}
 
 	public boolean onBoard(int x, int y) {
-		if ((x < board.length && x >= 0) && (y < board[0].length && y >= 0)) {
+		if ((x < board.length && x >= 0) && (y < board[0].length && y >= 0) && board[x][y] == 0) {
 			return true;
 		} else {
 			return false;

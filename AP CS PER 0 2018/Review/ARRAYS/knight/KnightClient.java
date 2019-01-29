@@ -7,28 +7,24 @@ public class KnightClient {
 		Knight k = new Knight(0, 0);
 
 		k.createBoard(8, 8);
-		int value = 0;
+		int value = 1;
 
 		Move[] potentialMoves;
 
-
-		while (value < 64) {
-			try {
+		while(value < 64) {
 			potentialMoves = k.getMoves();
-			
-			System.out.println(potentialMoves[0]);
-			
+	
 			Move m = k.getNextMove(potentialMoves);
 			
 			k.setValue(value);
 			
 			k.move(m);
-			k.print();
 			value++;
-			} catch(NullPointerException e) {
-				System.out.print(e.getStackTrace());
-			}
-			
 		}
+		// The Knight has reached the last square, thus assign it 64
+		k.setValue(64);
+		k.print();
+			
+
 	}
 }
