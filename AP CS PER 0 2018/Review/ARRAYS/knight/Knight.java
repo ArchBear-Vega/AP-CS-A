@@ -48,6 +48,7 @@ public class Knight {
 	}
 	
 	public Move getNextMove(Move[] potentialMoves) {
+		/*
 		int[] array = new int[potentialMoves.length];
 		int i = 0;
 		int index = 0;
@@ -67,8 +68,12 @@ public class Knight {
 				index = k;
 			}
 		}
+		*/
 		
-		return potentialMoves[index];
+		int i = (int) (Math.random() * potentialMoves.length);
+		System.out.println(potentialMoves.length);
+		
+		return potentialMoves.length == 0 ?  new Move(0,0): potentialMoves[i];
 	}
 
 	public void move(Move m) {

@@ -21,8 +21,9 @@ public class KnightClient {
 			k.move(m);
 			value++;
 		}
+		value++;
 		// The Knight has reached the last square, thus assign it 64
-		k.setValue(64);
+		k.setValue(value);
 		k.print();
 			
 
