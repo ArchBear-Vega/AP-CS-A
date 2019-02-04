@@ -43,7 +43,7 @@ public class Life {
 					} else if (getLiveNeighbors(i, j) < 2) {
 						boardNew[i][j] = null;
 					} else {
-						
+						boardNew[i][j] = board[i][j];
 					}
 				} else {
 					if (getLiveNeighbors(i, j) == 3) {
@@ -62,33 +62,20 @@ public class Life {
 
 	public int getLiveNeighbors(int i, int j) {
 		int count = 0;
-		String[] neighbors = getNeighbors(i, j);
-		for (int iterator = 0; iterator < neighbors.length; iterator++) {
-				if (neighbors[iterator] != null) {
-					count++;
+		for (int x = -1; x <= 1; x++) {
+			for (int y = -1; y <= 1; y++) {
+				if (onBoard(x + i, y + j)) {
+					 if(isAlive(board[x + i][j + y])){
+						 count++;
+					 }
+
+				}
 			}
-	
 		}
 		if(board[i][j] != null) {
 			count--;
 		}
 		return count;
-	}
-
-	private String[] getNeighbors(int i, int j) {
-		String[] neighbors = new String[8];
-		int index = 0;
-		for (int x = -1; x <= 1; x++) {
-			for (int y = -1; y <= 1; y++) {
-				if (onBoard(x + i, y + j) && index < 8) {
-					neighbors[index] = board[x + i][j + y];
-					index++;
-						
-
-				}
-			}
-		}
-		return neighbors;
 	}
 
 	public boolean isAlive(String string) {
@@ -138,7 +125,7 @@ public class Life {
 		int count = 0;
 		if (isColumn) {
 			for (int i = 0; i < board.length; i++) {
-				if (board[i][rc] != null) {
+				if (board[i][rc-1] != null) {
 					count++;
 				}
 			}
