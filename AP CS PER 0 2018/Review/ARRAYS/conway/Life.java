@@ -14,7 +14,7 @@ public class Life {
 
 	public void fillBoard() {
 		try {
-			File inFile = new File("Z:\\git\\AP-CS-A\\AP CS PER 0 2018\\Review\\ARRAYS\\conway\\life.txt");
+			File inFile = new File("C:\\Users\\vega1\\git\\AP-CS-A\\AP CS PER 0 2018\\Review\\ARRAYS\\conway\\life.txt");
 			Scanner sc = new Scanner(inFile);
 			while (sc.hasNext()) {
 				int row = sc.nextInt();
@@ -43,7 +43,7 @@ public class Life {
 					} else if (getLiveNeighbors(i, j) < 2) {
 						boardNew[i][j] = null;
 					} else {
-						
+						boardNew[i][j] = board[i][j];
 					}
 				} else {
 					if (getLiveNeighbors(i, j) == 3) {
@@ -62,33 +62,18 @@ public class Life {
 
 	public int getLiveNeighbors(int i, int j) {
 		int count = 0;
-		String[] neighbors = getNeighbors(i, j);
-		for (int iterator = 0; iterator < neighbors.length; iterator++) {
-				if (neighbors[iterator] != null) {
-					count++;
-			}
-	
-		}
-		if(board[i][j] != null) {
-			count--;
-		}
-		return count;
-	}
-
-	private String[] getNeighbors(int i, int j) {
-		String[] neighbors = new String[8];
-		int index = 0;
 		for (int x = -1; x <= 1; x++) {
 			for (int y = -1; y <= 1; y++) {
-				if (onBoard(x + i, y + j) && index < 8) {
-					neighbors[index] = board[x + i][j + y];
-					index++;
-						
+				if (onBoard(x + i, y + j)) {
+					if(isAlive(board[x+i][y+j])) {
+						count++;
+					} 
 
 				}
 			}
 		}
-		return neighbors;
+		return board[i][j] == null ? count : count - 1;
+		
 	}
 
 	public boolean isAlive(String string) {
@@ -119,7 +104,7 @@ public class Life {
 		}
 
 		System.out.println("Bacteria in 10th row:" + getLiveBacteria(10, false));
-		System.out.println("Bacteria in 10th column:" + getLiveBacteria(10, true));
+		System.out.println("Bacteria in 10th column:" + getLiveBacteria(9, true));
 	}
 
 	private int getLiveBacteria() {

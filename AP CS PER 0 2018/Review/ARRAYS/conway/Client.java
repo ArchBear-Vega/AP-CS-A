@@ -8,9 +8,9 @@ public class Client {
 		int i = 0;
 		game.display(i);
 		System.out.println(game.getLiveNeighbors(1,5));
-		for(int j = 0; j < 1; j++) {
+		for(int j = 0; j < 5; j++) {
 			game.update();
-			game.display(i+1);
+			game.display(j+1);
 			System.out.println();
 		}
 
