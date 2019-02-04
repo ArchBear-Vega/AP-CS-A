@@ -41,41 +41,39 @@ public class Knight {
 			if (onBoard(moves[i].getX() + getX(), moves[i].getY() + getY())) {
 				m[index2] = moves[i];
 				index2++;
-
+				
 			}
 		}
 		return m;
 	}
-
-	public Move getNextMove(Move[] potentialMoves, boolean random) {
-		if (!random) {
-			int[] array = new int[potentialMoves.length];
-			int i = 0;
-			int index = 0;
-			for (Move m : potentialMoves) {
-				array[i] = getNumberOfMoves(getX() + m.getX(), getY() + m.getY());
-				i++;
-			}
-			int val = array[0];
-			for (int j = 0; j < array.length; j++) {
-				if (val > array[j]) {
-					val = array[j];
-				}
-			}
-
-			for (int k = 0; k < array.length; k++) {
-				if (array[k] == val) {
-					index = k;
-				}
-			}
-			return potentialMoves[index];
-		} else {
-
-			int i = (int) (Math.random() * potentialMoves.length);
-			System.out.println(potentialMoves.length);
-
-			return potentialMoves.length == 0 ? new Move(0, 0) : potentialMoves[i];
+	
+	public Move getNextMove(Move[] potentialMoves) {
+		/*
+		int[] array = new int[potentialMoves.length];
+		int i = 0;
+		int index = 0;
+		for(Move m : potentialMoves) {
+			array[i] = getNumberOfMoves(getX() + m.getX(), getY() + m.getY());
+			i++;
 		}
+		int val = array[0];
+		for(int j = 0; j < array.length; j++) {
+			if(val > array[j]) {
+				val = array[j];
+			}
+		}
+		
+		for(int k = 0; k < array.length; k++) {
+			if(array[k] == val) {
+				index = k;
+			}
+		}
+		*/
+		
+		int i = (int) (Math.random() * potentialMoves.length);
+		System.out.println(potentialMoves.length);
+		
+		return potentialMoves.length == 0 ?  new Move(0,0): potentialMoves[i];
 	}
 
 	public void move(Move m) {
@@ -90,13 +88,7 @@ public class Knight {
 	public void print() {
 		for (int[] r : board) {
 			for (int e : r) {
-				if(e < 10) {
-					System.out.print("0"+ e + " ");
-					
-				} else {
-					System.out.print(e + " ");
-				}
-				
+				System.out.print(e + " ");
 			}
 			System.out.println();
 		}
