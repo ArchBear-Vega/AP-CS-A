@@ -14,7 +14,7 @@ public class Life {
 
 	public void fillBoard() {
 		try {
-			File inFile = new File("Z:\\git\\AP-CS-A\\AP CS PER 0 2018\\Review\\ARRAYS\\conway\\life.txt");
+			File inFile = new File("C:\\Users\\vega1\\git\\AP-CS-A\\AP CS PER 0 2018\\Review\\ARRAYS\\conway\\life.txt");
 			Scanner sc = new Scanner(inFile);
 			while (sc.hasNext()) {
 				int row = sc.nextInt();
@@ -65,17 +65,15 @@ public class Life {
 		for (int x = -1; x <= 1; x++) {
 			for (int y = -1; y <= 1; y++) {
 				if (onBoard(x + i, y + j)) {
-					 if(isAlive(board[x + i][j + y])){
-						 count++;
-					 }
+					if(isAlive(board[x+i][y+j])) {
+						count++;
+					} 
 
 				}
 			}
 		}
-		if(board[i][j] != null) {
-			count--;
-		}
-		return count;
+		return board[i][j] == null ? count : count - 1;
+		
 	}
 
 	public boolean isAlive(String string) {
@@ -106,7 +104,7 @@ public class Life {
 		}
 
 		System.out.println("Bacteria in 10th row:" + getLiveBacteria(10, false));
-		System.out.println("Bacteria in 10th column:" + getLiveBacteria(10, true));
+		System.out.println("Bacteria in 10th column:" + getLiveBacteria(9, true));
 	}
 
 	private int getLiveBacteria() {
@@ -125,7 +123,7 @@ public class Life {
 		int count = 0;
 		if (isColumn) {
 			for (int i = 0; i < board.length; i++) {
-				if (board[i][rc-1] != null) {
+				if (board[i][rc] != null) {
 					count++;
 				}
 			}

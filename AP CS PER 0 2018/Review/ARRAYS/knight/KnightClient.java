@@ -14,14 +14,13 @@ public class KnightClient {
 		while(value < 64) {
 			potentialMoves = k.getMoves();
 	
-			Move m = k.getNextMove(potentialMoves);
+			Move m = k.getNextMove(potentialMoves, false);
 			
 			k.setValue(value);
 			
 			k.move(m);
 			value++;
 		}
-		value++;
 		// The Knight has reached the last square, thus assign it 64
 		k.setValue(value);
 		k.print();
