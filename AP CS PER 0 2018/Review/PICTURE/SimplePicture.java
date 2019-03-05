@@ -2,7 +2,6 @@ package PICTURE;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
-import javax.swing.ImageIcon;
 import java.awt.*;
 import java.io.*;
 import java.awt.geom.*;
@@ -521,10 +520,12 @@ public class SimplePicture implements DigitalPicture
    Graphics2D graphics2d = bufferedImage.createGraphics();
    
    // set the color to white
-   graphics2d.setPaint(Color.white);
+   graphics2d.setPaint(Color.LIGHT_GRAY);
+   
+
    
    // set the font to Helvetica bold style and size 16
-   graphics2d.setFont(new Font("Helvetica",Font.BOLD,16));
+   graphics2d.setFont(new Font("Impact",Font.BOLD,32));
    
    // draw the message
    graphics2d.drawString(message,xPos,yPos);

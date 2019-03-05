@@ -1,7 +1,8 @@
 package PICTURE;
 
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
 
 /**
  * Class that holds a digital picture and displays it using a JFrame

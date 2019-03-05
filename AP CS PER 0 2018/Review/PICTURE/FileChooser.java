@@ -1,10 +1,11 @@
 package PICTURE;
 
+import java.io.File;
+import java.net.URL;
+import java.net.URLDecoder;
+
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
-import java.util.Properties;
-import java.io.*;
-import java.net.*;
   
 /**
  * A class to make working with a file chooser easier
@@ -27,7 +28,8 @@ public class FileChooser
   {
     String path = null;
     String directory = getMediaDirectory();
-    boolean done = true;
+    @SuppressWarnings("unused")
+	boolean done = true;
     
     // get the full path
     path = directory + fileName;
@@ -99,7 +101,8 @@ public class FileChooser
    * Method to get the directory for the media
    * @return the media directory
    */
-  public static String getMediaDirectory() 
+  @SuppressWarnings({ "unused", "rawtypes" })
+public static String getMediaDirectory() 
   {
     String directory = null;
     boolean done = false;
