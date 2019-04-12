@@ -65,10 +65,10 @@ public class PictureTester {
 		// testKeepOnlyBlue();
 		// testKeepOnlyRed();
 		// testKeepOnlyGreen();
-		// testNegate();
-		// testGrayscale();
-		// testFixUnderwater();
-		// testMirrorVertical();
+		 testNegate();
+		 testGrayscale();
+		 testFixUnderwater();
+		 testMirrorVertical();
 		// testMirrorVerticalRightToLeft();
 		// testMirrorHorizontal();
 		// testMirrorHorizontalBotToTop();

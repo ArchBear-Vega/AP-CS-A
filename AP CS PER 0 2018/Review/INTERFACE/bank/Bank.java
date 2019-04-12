@@ -3,7 +3,7 @@ package INTERFACE.bank;
 public class Bank {
 	public static void main(String[] args) {
 		
-		Account a = new Savings();
+		
 		Savings s = new Savings(1000000, .02);
 		Checking c = new Checking(5000, .0002);
 		
